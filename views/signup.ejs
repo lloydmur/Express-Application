@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs') %> 
+  
+  <body>
+    <%- include('./partials/navbar.ejs') %> 
+    <div class="main-body">
+      <h1 style='text-align: center;'>Create an Account!</h1>
+      <div class="signup-form align-itemscenter">
+        <form action="/users" method="POST">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password"
+             class="form-control" name="password" required>
+          </div>
+          <div class="mb-3">
+            <label for="confirm-password" class="form-label">Confirm Password:</label>
+            <input type="password" class='form-control' name='confirm-password' required>            
+          </div>
+          <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth:</label>
+            <input type="date" name="dob" id="" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      
+    </div>
+    
+  </body>
+  
+</html>

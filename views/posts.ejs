@@ -1,0 +1,30 @@
+<ul class="feed">
+  <% Posts.forEach(post => { %>
+    <li class="feed-item">
+      <h1><%= post.title %> </h1>
+      <p>Posted by, <%= post.author %> </p>
+    </li>
+  <% }) %>
+</ul>
+  <div class="main-body">
+    <h1 style='text-align: center;'>Posts</h1>
+  </div>
+  <a href="" class="delete" data-doc='<%= post.id %>'> Delete </a>  
+
+  <script>
+      const deleteTarget = document.querySelector('a.delete');
+      deleteTarget.addEventListener('click', (e) => {
+          const targetURL = `/posts/${deleteTarget.dataset.doc}`;
+          fetch(targetURL, {
+              method: 'DELETE'
+          })
+            .then((res) => {
+                res.json()
+            })
+            .then((data) => {
+                console.log(data);
+                window.location.href = data.redirect
+            })
+            .catch((err) => console.log(err));
+      })
+  </script>

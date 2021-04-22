@@ -1,0 +1,2 @@
+This is an express app
+utilizting passport, passport-local, and express-session libraries 

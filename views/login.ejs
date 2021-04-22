@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<% var errorMessage; %>
+<html>
+  <%- include('./partials/head.ejs') %> 
+  
+  <body>
+    <%- include('./partials/navbar.ejs') %> 
+    <div class="main-body">
+      <h1 style='text-align: center;'>Log into your Account!</h1>
+      <div class="signup-form align-itemscenter">
+        <% if (errorMessage) { %>
+         <p>Invalid credentials!</p>
+        <% } %>
+        <form action="/auth/login" method="POST">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" class="form-control" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password"
+             class="form-control" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="OAuth">
+          <p>Sign in with...</p>
+          <ul class="auth-options">
+            <li>
+              <a href="/auth/google/" class='btn btn-danger'>
+                <i class="fab fa-google"></i>
+              </a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+      
+    </div>
+    
+  </body>
+  
+</html>

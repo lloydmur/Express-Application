@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Teko&display=swap');
+*{
+}
+html{
+  /*scroll-behavior: smooth;*/
+}
+
+
+body {
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+}
+
+a {
+}
+#search-bar {
+  margin-right: 12px;
+  max-height: initial;
+  max-width: initial;
+}
+input {
+  max-width: initial;
+}
+button {
+  max-width: initial;
+}
+
+#clock {
+  font-family: 'Teko';
+  font-style: normal;
+  font-size: 24px;
+  text-align: center;
+  color: white;
+  display: inline;
+  max-width: initial;
+  max-block-size: initial;
+  margin-right: 4px;
+  padding-right: 4px;
+}
+.main-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-form {
+  margin: 20px;
+  padding: 0px 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.OAuth {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin: 1em;
+}
+.OAuth ul {
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+}

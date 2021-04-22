@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head.ejs') %>
+  <% var posts; %>
+  <body>
+    <%- include('./partials/navbar.ejs') %>
+
+    <h1><%= user.userName %>'s Profile</h1>
+    <div class="post-feed">
+      <% if (posts != null && posts.length > 0) { %>
+        <%- include('./posts.ejs') %> 
+      <% } else { %>
+        <p>You have no posts, good for you...</p>
+      <% } %>
+    </div>
+    
+    
+  </body>
+
+</html>
