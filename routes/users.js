@@ -38,7 +38,6 @@ router.get('/:userId', (req, res, next) => {
   
   userModel.findOne({_id: req.params.userId})
     .then((user) => {
-      console.log(user)
       
       res.render('user', {AP: req.user.isAdmin ,user: user, title: user.userName + '\'s profile'})
     })
@@ -50,20 +49,7 @@ router.get('/', (req, res,) => {
     .then((result) => res.send(result))
     .catch((err) => console.log(err))
 });
-//SIGNUP
-router.post('/', function(req, res, next){
-  const newUser = new userModel({
-    userName: req.body.username,
-    password: req.body.password,
-    dateOfBirth: req.body.dob 
-  });
-  newUser.save()
-    .then((result) => {
-      console.log(result);
-      res.redirect(`/users/${result.body.id}`)
-    })
-    .catch(err => console.log(err))
-});
+
 
 router.delete('/', function(req, res, next){
   res.send('Get a DELETE request at /user');

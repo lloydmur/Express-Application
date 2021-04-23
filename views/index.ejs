@@ -5,7 +5,12 @@
   <body>
     <%- include('./partials/navbar.ejs') %> 
     <div class="main-body">
-      <h1 style='text-align: center;'>Welcome to this Express App!</h1>
+      <% if (user) { %>
+        <h1 style='text-align: center;'>Welcome <%= user.userName %>!  </h1>
+      <% } else { %>
+        <h1 style='text-align: center;'>Welcome to this Express App!</h1>
+      <% } %>
+      
     </div>
     
   </body>

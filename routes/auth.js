@@ -1,6 +1,32 @@
 const router = require('express').Router();
 const passport = require('passport');
+const User = require('../public/models/user');
+const bcrypt = require('bcrypt');
 
+
+//SIGNUP
+router.post('/signup', function(req, res, next){
+    
+    const newUser = new User({
+      userName: req.body.username,
+      password: req.body.password,
+      dateOfBirth: req.body.dob 
+    });
+    bcrypt.hash(newUser.password, 10)
+        .then((hash) => {
+            console.log('Password hashed: ' + hash)
+            newUser.password = hash;
+            newUser.save();
+            res.redirect(`/`);
+        })
+    
+  });
+
+router.get('/signup', (req, res, next) => {
+    res.render('signup', {title: 'Creat an Accaount!'});
+});
+
+//LOGIN
 router.get('/login', (req, res) => {
     console.log(req.user);
     res.render('login', {errorMessage: req.message});

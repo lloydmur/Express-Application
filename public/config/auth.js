@@ -3,6 +3,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const keys = require('./keys');
 const User = require('../models/user.js');
+const bcrypt = require('bcrypt');
 
 /*Oath providers like google can grant permission
 to gain access to profile info.
@@ -70,10 +71,10 @@ passport.use(
         passwordField: 'password'
     },
     (username, password, done) => {
-        User.findOne({userName: username, password: password}, (err, user) => {
+        User.findOne({userName: username}, (err, user) => {
             if(err) return done(err);
             if(!user) return done(null, false, {message: 'Invalid Login Credentials'});
-            if(user.password != password) return done(null, false, {message: 'Invalid Login Credentials'});
+            if(!verifyPassword(password, user.password)) return done(null, false, {message: 'Invalid Login Credentials'});
             console.log('User found: ' + username);
             return done(null, user);
         })
@@ -94,3 +95,7 @@ passport.use(
     }
     )
 )
+async function verifyPassword(password, hashWord){
+    const match = await bcrypt.compare(password, hashWord);
+    return match;
+}
