@@ -19,6 +19,7 @@ router.post('/signup', function(req, res, next){
             newUser.save();
             res.redirect(`/`);
         })
+        .catch((err) => console.log(err));
     
   });
 
@@ -33,17 +34,17 @@ router.get('/login', (req, res) => {
 
 });
 
-router.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
-})
-
 router.post('/login', passport.authenticate('local', {failureRedirect: '/auth/login'}), (req, res) => {
     console.log('local login successful!')
     console.log(req.user);
     
     res.redirect('/');
 })
+
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
 
 router.get('logout', (req, res) => {
  
